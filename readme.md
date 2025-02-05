@@ -1,5 +1,5 @@
-# Batch get SQL database metrics across multiple subscription
-This Powershell scripts is designed for retrieving the storage usage metrics of all SQL Servers deloyed across multiple subscriptions. It supports **Azure SQL Database**, **Azure SQL Elastic Pool**, **Azure SQL Managed Instance** except **Azure SQL Managed Instance Pool** and **Azure SQL on VM** are not supported by Azure monitor metrics.
+# Powershell script for SQL database metrics across multiple subscriptions
+This Powershell scripts is designed for retrieving the storage usage metrics of all SQL Servers deloyed across multiple subscriptions. It supports **Azure SQL Database**, **Azure SQL Elastic Pool**, **Azure SQL Managed Instance** except **Azure SQL Managed Instance Pool** and **Azure SQL on VM** which are not supported by Azure monitor metrics.
 
 
 ##  Step 1: Install the Azure PowerShell Module
