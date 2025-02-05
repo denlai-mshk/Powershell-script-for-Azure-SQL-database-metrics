@@ -1,0 +1,3 @@
+"SubscriptionName", "SubscriptionId"
+YYYYYYYYYYYYYYY, xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+YYYYYYYYYYYYYYY, xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
