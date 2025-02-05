@@ -19,20 +19,20 @@ Import-Module Az.Compute
 
 
 # Ensure proper login
-<# 
-$TenantId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+
+$TenantId = "9fd8775f-acbf-40a6-aab5-4e44a19fa41c"
 try {
     Connect-AzAccount -TenantId $TenantId -ErrorAction Stop
 } catch {
     Write-Output "Failed to authenticate. Please ensure you are logged in with the correct account."
     exit
 }
-#>
+
 # Import the list of subscriptions from sublist.txt
-$subscriptions = Import-Csv -Path "sublist.txt" -Delimiter ',' -Header "SubscriptionName", "SubscriptionId" | Select-Object -Skip 1
+$subscriptions = Import-Csv -Path "sublist.txt" -Delimiter ',' -Header "SubscriptionName", "SubscriptionId", "TenantId" | Select-Object -Skip 1
 
 # Initialize the output files
-$outputFile = "findallsqlsvr.txt"
+$outputFile = "sqlstoragemetrics.csv"
 if (Test-Path $outputFile) {
     Remove-Item $outputFile
 }
@@ -67,6 +67,7 @@ foreach ($subscription in $subscriptions) {
     Write-Output "$(Get-Date -Format HH:mm:ss) Processing subscriptions: $($subscription.SubscriptionName)"
     $SubscriptionId = $subscription.SubscriptionId
     $SubscriptionName = $subscription.SubscriptionName
+    $TenantId = $subscription.TenantId
 
     # Check if SubscriptionId or SubscriptionName is empty
     if ([string]::IsNullOrEmpty($SubscriptionId) -or [string]::IsNullOrEmpty($SubscriptionName)) {
@@ -76,10 +77,11 @@ foreach ($subscription in $subscriptions) {
 
     try {
         # Debug output to check the subscription details
+        Write-Output "Setting context for Tenant: $TenantId"
         Write-Output "Setting context for Subscription: $SubscriptionName ($SubscriptionId)"
 
         # Set the current subscription context
-        Select-AzSubscription -SubscriptionName $SubscriptionName -ErrorAction Stop
+        Set-AzContext -TenantId $TenantId -SubscriptionName $SubscriptionName -ErrorAction Stop
 
         # Discover SQL Servers
         Write-Output "$(Get-Date -Format HH:mm:ss) Processing Get-AzSqlServer"

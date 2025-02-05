@@ -22,15 +22,15 @@ Verify the modules are installed completely by sending these commands:
 Send "Connect-AzAccount" command to sign on with your browser, you may need to have Azure Subscription Reader role or corresponding role privilege above.
 
 ```
-Connect-AzAccount -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+Connect-AzAccount -TenantId "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy"
 ``` 
 
 ##  Step 4: Modify the sublist.txt
 Edit the **sublist.txt** and place your subscription name and id after the 1st header row "SubscriptionName", "SubscriptionId"
 ```
-"SubscriptionName", "SubscriptionId"
-your-sub-name1, xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
-your-sub-name2, xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+"SubscriptionName", "SubscriptionId", "TenantId"
+your-sub-name1, xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx1, yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy
+your-sub-name2, xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx2, yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy
 ```  
 
 ##  Step 5: Execute the checksqlstorage.ps1
