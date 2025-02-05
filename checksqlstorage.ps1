@@ -19,15 +19,15 @@ Import-Module Az.Compute
 
 
 # Ensure proper login
-
-$TenantId = "9fd8775f-acbf-40a6-aab5-4e44a19fa41c"
+<# 
+$TenantId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
 try {
     Connect-AzAccount -TenantId $TenantId -ErrorAction Stop
 } catch {
     Write-Output "Failed to authenticate. Please ensure you are logged in with the correct account."
     exit
 }
-
+#>
 # Import the list of subscriptions from sublist.txt
 $subscriptions = Import-Csv -Path "sublist.txt" -Delimiter ',' -Header "SubscriptionName", "SubscriptionId", "TenantId" | Select-Object -Skip 1
 
